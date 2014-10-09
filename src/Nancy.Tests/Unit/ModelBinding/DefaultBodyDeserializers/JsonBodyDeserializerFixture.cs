@@ -128,6 +128,7 @@ namespace Nancy.Tests.Unit.ModelBinding.DefaultBodyDeserializers
             result.Days.ShouldEqual(14);
         }
 
+#if !__MonoCS__
         [Fact]
         public void Should_deserialize_list_of_primitives()
         {
@@ -214,6 +215,7 @@ namespace Nancy.Tests.Unit.ModelBinding.DefaultBodyDeserializers
             result.ListOfComplexObjectsField[1].Value1.ShouldEqual("seven");
             result.ListOfComplexObjectsField[1].Value2.ShouldEqual("eight");
         }
+#endif
 
         [Fact]
         public void Should_Deserialize_Signed_And_Unsigned_Nullable_Numeric_Types()

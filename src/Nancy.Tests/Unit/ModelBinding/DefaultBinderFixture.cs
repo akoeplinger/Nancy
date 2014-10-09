@@ -1176,6 +1176,7 @@ namespace Nancy.Tests.Unit.ModelBinding
             result.Last().ShouldEqual("AnotherTest");
         }
 
+#if !__MonoCS__
         [Fact]
         public void Should_bind_ienumerable_model_from_body()
         {
@@ -1192,7 +1193,6 @@ namespace Nancy.Tests.Unit.ModelBinding
             result.First().StringProperty.ShouldEqual("Test");
             result.Last().StringProperty.ShouldEqual("AnotherTest");
         }
-
 
         [Fact]
         public void Should_bind_ienumerable_model_with_instance_from_body()
@@ -1216,7 +1216,8 @@ namespace Nancy.Tests.Unit.ModelBinding
             result.Last().IntProperty.ShouldEqual(9);
             result.Last().AnotherStringProperty.ShouldEqual("Bananas");
         }
-        
+#endif
+
         [Fact]
         public void Should_bind_model_with_instance_from_body()
         {
@@ -1238,7 +1239,8 @@ namespace Nancy.Tests.Unit.ModelBinding
             result.IntProperty.ShouldEqual(6);
             result.AnotherStringProperty.ShouldEqual("Beers");
         }
-        
+
+#if !__MonoCS__
         [Fact]
         public void Should_bind_model_from_body_that_contains_an_array()
         {
@@ -1300,7 +1302,7 @@ namespace Nancy.Tests.Unit.ModelBinding
             result.Last().SomeStringsProperty.ShouldBeNull();
             result.Last().SomeStringsField.ShouldBeNull();
         }
-
+#endif
 
         [Fact]
         public void Form_request_and_context_properties_should_take_precedence_over_body_properties()
